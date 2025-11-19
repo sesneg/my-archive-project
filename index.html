@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports Car Archive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="glass">
+    <h1>🏎️ Sports Car Archive</h1>
+    <input type="text" id="globalSearch" placeholder="🔍 Search everything...">
+    <button id="newCategoryBtn">🚗 New Category</button>
+    <button id="settingsBtn">⚙️ Settings</button>
+    <button id="exportBtn">📤 Export</button>
+    <button id="importBtn">📥 Import</button>
+  </header>
+
+  <div id="categoryList"></div>
+
+  <div id="emptyState" class="glass">
+    <h2 style="margin-bottom:20px; color:#4ecdc4">🏁 Start Your Collection</h2>
+    <p style="margin-bottom:20px; font-size:1.1em">No categories yet. Create your first collection of sports cars!</p>
+    <button id="createFirst">🚀 Create First Category</button>
+  </div>
+
+  <div id="categoryView" class="hidden glass">
+    <div id="categoryHeader">
+      <h2 id="categoryTitle">Category Name</h2>
+      <p id="categoryDesc">Description</p>
+    </div>
+    <div class="controls">
+      <input type="text" id="itemSearch" placeholder="🔍 Search items...">
+      <select id="filterSelect">
+        <option value="all">All Items</option>
+        <option value="favorites">Favorites Only</option>
+      </select>
+      <button id="addItemBtn">➕ Add Item</button>
+      <button id="editCategoryBtn">✏️ Edit Category</button>
+      <button id="deleteCategoryBtn">🗑️ Delete Category</button>
+    </div>
+    <div id="itemsGrid"></div>
+  </div>
+
+  <!-- Templates -->
+  <template id="categoryTemplate">
+    <div class="cat-card glass">
+      <h3 class="cat-name"></h3>
+      <p class="cat-count"></p>
+      <button class="openBtn">🏎️ Open</button>
+    </div>
+  </template>
+
+  <template id="itemCardTpl">
+    <div class="item-card glass">
+      <img class="item-image" src="" alt="Item image" />
+      <h4 class="item-title"></h4>
+      <p class="item-desc"></p>
+      <a class="item-link" target="_blank">🌐 Visit Link</a>
+      <div class="tags"></div>
+      <div class="item-actions">
+        <button class="favBtn">❤️</button>
+        <button class="editBtn">✏️ Edit</button>
+        <button class="delBtn">🗑️ Delete</button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Lock Overlay -->
+  <div id="lockOverlay" class="hidden">
+    <div class="modal-content glass">
+      <h2 style="margin-bottom:20px; background:linear-gradient(45deg,#ff6b6b,#4ecdc4); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+        🔒 Archive Locked
+      </h2>
+      <input type="password" id="pinInput" placeholder="Enter PIN" style="margin-bottom:20px;">
+      <div style="display: flex; gap: 12px; margin-top: 20px;">
+        <button id="unlockBtn">🔓 Unlock</button>
+        <button id="setPinBtn">📝 Set PIN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="hidden">
+    <div class="modal-content glass">
+      <h2 style="margin-bottom:30px; background:linear-gradient(45deg,#ff6b6b,#4ecdc4); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+        ⚙️ Settings
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0;">
+        <div>
+          <label style="display:block; margin-bottom:8px; font-weight:600;">🎨 Theme:</label>
+          <select id="themeSelect">
+            <option value="dark">🌙 Dark Racing</option>
+            <option value="light">☀️ Light Speed</option>
+            <option value="minimal">🚀 Minimal Turbo</option>
+            <option value="neon">💚 Neon Green</option>
+            <option value="vintage">🏁 Vintage Race</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:8px; font-weight:600;">⚡ Animation:</label>
+          <select id="animSelect">
+            <option value="smooth">🔄 Smooth Cruise</option>
+            <option value="fast">🏎️ Fast Track</option>
+            <option value="calm">🌊 Calm Drive</option>
+          </select>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <button id="changePinBtn">🔐 Change PIN</button>
+        <button id="exportAll">💾 Export All Data</button>
+        <button id="importAll">📁 Import All Data</button>
+        <button id="closeSettings">❌ Close Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
